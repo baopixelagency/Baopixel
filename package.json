@@ -1,0 +1,41 @@
+{
+  "name": "baopixel",
+  "version": "1.0.0",
+  "description": "Site web de BaoPixel - Agence de communication audiovisuelle pour l'immobilier",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "baopixel",
+    "agence",
+    "créative",
+    "audiovisuel",
+    "immobilier",
+    "communication",
+    "vidéo",
+    "design"
+  ],
+  "author": "BaoPixel Team",
+  "license": "All Rights Reserved",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baopixel/baopixel.github.io.git"
+  },
+  "homepage": "https://baopixel.com",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
