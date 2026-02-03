@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- bootstrap grid css -->
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <!-- fancybox css -->
+    <link rel="stylesheet" href="css/plugins/fancybox.min.css">
+    <!-- ashley scss -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- page name -->
+    <title>Baopixel - Demande de devis</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+
+    <style>
+        .mil-devis-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 60px;
+            table-layout: fixed;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .mil-devis-table th,
+        .mil-devis-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            vertical-align: middle;
+            height: auto;
+            min-height: 100px;
+        }
+
+        .mil-devis-table th {
+            font-weight: 600;
+            color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.03);
+            padding: 20px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mil-devis-table th:first-child {
+            width: 30%;
+            text-align: left;
+        }
+
+        .mil-devis-table th:last-child {
+            width: 70%;
+            text-align: center;
+        }
+
+        .mil-devis-prestations {
+            font-weight: 500;
+            color: rgb(0, 0, 0);
+            text-align: left;
+            padding: 20px;
+            vertical-align: top;
+            display: flex;
+            align-items: center;
+        }
+
+        .mil-devis-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 20px;
+            align-content: center;
+            justify-items: start;
+            padding: 20px;
+        }
+
+        .mil-devis-option {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            white-space: normal;
+            text-align: left;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .mil-devis-option input[type="radio"] {
+            margin-right: 0;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: rgb(0, 0, 0);
+            appearance: none;
+            -webkit-appearance: none;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .mil-devis-option input[type="radio"]:hover {
+            border-color: rgb(0, 0, 0);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mil-devis-option input[type="radio"]:checked {
+            background-color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mil-devis-option input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .mil-devis-option input[type="checkbox"] {
+            margin-right: 0;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: rgb(0, 0, 0);
+            appearance: none;
+            -webkit-appearance: none;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .mil-devis-option input[type="checkbox"]:hover {
+            border-color: rgb(0, 0, 0);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mil-devis-option input[type="checkbox"]:checked {
+            background-color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mil-devis-option input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .mil-devis-option label {
+            cursor: pointer;
+            margin: 0;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .mil-devis-option input[type="radio"]:hover + label {
+            color: rgb(0, 0, 0);
+        }
+
+        @media screen and (max-width: 768px) {
+            .mil-devis-table th,
+            .mil-devis-table td {
+                padding: 15px;
+                font-size: 13px;
+                min-height: 80px;
+            }
+
+            .mil-devis-options {
+                gap: 15px;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .mil-devis-option {
+                gap: 8px;
+            }
+
+            .mil-devis-option input[type="checkbox"],
+            .mil-devis-option input[type="radio"] {
+                width: 16px;
+                height: 16px;
+            }
+
+            .mil-devis-option label {
+                font-size: 11px;
+            }
+        }
+
+        .mil-form-section {
+            margin-bottom: 60px;
+        }
+
+        .mil-form-section h3 {
+            margin-bottom: 40px;
+            font-size: 28px;
+            font-weight: 500;
+            color: rgb(0, 0, 0);
+            line-height: 120%;
+        }
+
+        .mil-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .mil-form-row {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .mil-form-section h3 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+        }
+
+        .mil-form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mil-form-group label {
+            margin-bottom: 12px;
+            font-weight: 500;
+            font-size: 14px;
+            color: rgb(0, 0, 0);
+        }
+
+        .mil-form-group input,
+        .mil-form-group textarea,
+        .mil-form-group select {
+            padding: 16px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-family: "Outfit", sans-serif;
+            font-size: 14px;
+            color: rgb(0, 0, 0);
+            transition: all 0.3s ease;
+        }
+
+        .mil-form-group input::placeholder,
+        .mil-form-group textarea::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .mil-form-group input:focus,
+        .mil-form-group textarea:focus,
+        .mil-form-group select:focus {
+            outline: none;
+            border-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+
+        .mil-form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .mil-accompaniment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mil-radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .mil-radio-option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            accent-color: rgb(0, 0, 0);
+            appearance: none;
+            -webkit-appearance: none;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .mil-radio-option input[type="radio"]:hover {
+            border-color: rgb(255, 152, 0);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 12px rgba(255, 152, 0, 0.25);
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #fffaf0 0%, #fff 100%);
+        }
+
+        .mil-radio-option input[type="radio"]:checked {
+            border-color: rgb(255, 152, 0);
+            background: linear-gradient(135deg, rgb(255, 152, 0), rgba(255, 152, 0, 0.85));
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 16px rgba(255, 152, 0, 0.35);
+        }
+
+        .mil-radio-option input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 11px;
+            height: 11px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .mil-radio-option label {
+            cursor: pointer;
+            margin: 0;
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .mil-radio-option input[type="radio"]:hover + label {
+            color: rgb(255, 152, 0);
+        }
+
+        .mil-radio-option input[type="radio"]:checked + label {
+            color: rgb(255, 152, 0);
+            font-weight: 600;
+        }
+
+        .mil-form-explanatory {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            line-height: 150%;
+        }
+
+        .mil-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(0, 0, 0);
+            font-size: 14px;
+            font-weight: 400;
+            font-family: "Outfit", sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mil-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 152, 0, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .mil-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .mil-button:hover {
+            background-color: rgb(255, 152, 0);
+            border-color: rgb(255, 152, 0);
+            color: rgb(255, 255, 255);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 152, 0, 0.3);
+        }
+
+        .mil-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Scroll down arrow styling */
+        .mil-down-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .mil-down-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Icon button styling */
+        .mil-icon-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mil-icon-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .mil-icon-button:hover {
+            background-color: rgba(0, 0, 0, 0.85);
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .mil-icon-button:hover::before {
+            width: 150px;
+            height: 150px;
+        }
+
+        .mil-confirmation-message {
+            display: none;
+            padding: 60px 40px;
+            background-color: rgba(0, 0, 0, 0.02);
+            border-left: 4px solid rgb(0, 0, 0);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .mil-confirmation-message.show {
+            display: block;
+        }
+
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .mil-intro-text p {
+            font-size: 15px;
+            line-height: 160%;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mil-form-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .mil-form-section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .mil-form-section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .mil-form-section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .mil-form-group input,
+        .mil-form-group textarea,
+        .mil-form-group select {
+            border-radius: 4px;
+        }
+
+        .mil-form-group input::placeholder,
+        .mil-form-group textarea::placeholder {
+            transition: color 0.3s ease;
+        }
+
+        .mil-form-group input:focus::placeholder,
+        .mil-form-group textarea:focus::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+
+        .mil-devis-table {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+            margin: 0;
+            color: rgba(0, 0, 0, 0.6);
+            line-height: 150%;
+            font-size: 15px;
+        }
+
+        .mil-required {
+            color: rgb(255, 0, 0);
+            margin-left: 3px;
+        }
+
+        .mil-intro-text {
+            max-width: 700px;
+            margin-bottom: 80px;
+        }
+
+        .mil-intro-text p {
+            font-size: 15px;
+            line-height: 160%;
+            color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- wrapper -->
+    <div class="mil-wrapper" id="top">
+
+        <!-- cursor -->
+        <div class="mil-ball">
+            <span class="mil-icon-1">
+                <svg viewBox="0 0 128 128">
+                    <path d="M106.1,41.9c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2L116.8,61H11.2l14.9-14.9c1.2-1.2,1.2-3.1,0-4.2	c-1.2-1.2-3.1-1.2-4.2,0l-20,20c-1.2,1.2-1.2,3.1,0,4.2l20,20c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2	L11.2,67h105.5l-14.9,14.9c-1.2,1.2-1.2,3.1,0,4.2c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9l20-20c1.2-1.2,1.2-3.1,0-4.2L106.1,41.9	z" />
+                </svg>
+            </span>
+            <div class="mil-more-text">More</div>
+            <div class="mil-choose-text">Сhoose</div>
+        </div>
+        <!-- cursor end -->
+
+        <!-- preloader -->
+        <div class="mil-preloader">
+            <div class="mil-preloader-animation">
+                <div class="mil-pos-abs mil-animation-1">
+                    <p class="mil-h3 mil-muted mil-thin">Stratégie</p>
+                    <p class="mil-h3 mil-muted">Contenu</p>
+                    <p class="mil-h3 mil-muted mil-thin">Impact</p>
+                </div>
+                <div class="mil-pos-abs mil-animation-2">
+                    <div class="mil-reveal-frame">
+                        <p class="mil-reveal-box"></p>
+                        <p class="mil-h3 mil-muted mil-thin">BaoPixel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
+
+        <!-- scrollbar progress -->
+        <div class="mil-progress-track">
+            <div class="mil-progress"></div>
+        </div>
+        <!-- scrollbar progress end -->
+
+        <!-- menu -->
+        <div class="mil-menu-frame">
+            <!-- frame clone -->
+            <div class="mil-frame-top">
+                <a href="home-1.html" class="mil-logo">
+                    <img src="assets/typo.svg" alt="BaoPixel" class="logo-desktop">
+                    <img src="assets/icon.svg" alt="BaoPixel" class="logo-mobile">
+                </a>
+                <div class="mil-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+            <!-- frame clone end -->
+            <div class="container">
+                <div class="mil-menu-content">
+                    <div class="row">
+                        <div class="col-xl-5">
+
+                            <nav class="mil-main-menu" id="swupMenu">
+                                <ul>
+                                    <!-- Accueil Link -->
+                                    <li>
+                                        <a href="home-1.html">Accueil</a>
+                                    </li>
+                                    <!-- Réalisations Link -->
+                                    <li>
+                                        <a href="portfolio-2.html">Réalisations</a>
+                                    </li>
+                                    <!-- Services Link -->
+                                    <li>
+                                        <a href="services.html">Services</a>
+                                    </li>
+                                    <!-- Devis Link (Active) -->
+                                    <li class="mil-active">
+                                        <a href="devis.html">Devis</a>
+                                    </li>
+                                    <!-- À propos Link -->
+                                    <li>
+                                        <a href="team.html">À propos</a>
+                                    </li>
+                                    <!-- Contact Link -->
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+                        </div>
+                        <div class="col-xl-7">
+
+                            <div class="mil-menu-right-frame">
+                                <div class="mil-animation-in">
+                                    <div class="mil-animation-frame">
+                                        <div class="mil-animation mil-position-1 mil-scale" data-value-1="2" data-value-2="2"></div>
+                                    </div>
+                                </div>
+                                <div class="mil-menu-right">
+                                    <div class="row">
+                                        <div class="col-lg-8 mil-mb-60">
+
+                                            <h6 class="mil-muted mil-mb-30">Projects</h6>
+
+                                            <ul class="mil-menu-list">
+                                                <li><a href="project-1.html" class="mil-light-soft">Interior design studio</a></li>
+                                                <li><a href="project-2.html" class="mil-light-soft">Home Security Camera</a></li>
+                                                <li><a href="project-3.html" class="mil-light-soft">Kemia Honest Skincare</a></li>
+                                                <li><a href="project-4.html" class="mil-light-soft">Cascade of Lava</a></li>
+                                                <li><a href="project-5.html" class="mil-light-soft">Air Pro by Molekule</a></li>
+                                                <li><a href="project-6.html" class="mil-light-soft">Tony's Chocolonely</a></li>
+                                            </ul>
+
+                                        </div>
+                                        <div class="col-lg-4 mil-mb-60">
+
+                                            <h6 class="mil-muted mil-mb-30">Useful links</h6>
+
+                                            <ul class="mil-menu-list">
+                                                <li><a href="#." class="mil-light-soft">Politique de confidentialité</a></li>
+                                                <li><a href="#." class="mil-light-soft">Conditions générales</a></li>
+                                                <li><a href="#." class="mil-light-soft">Politique des cookies</a></li>
+                                                <li><a href="#." class="mil-light-soft">Rejoindre l'équipe</a></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="mil-divider mil-mb-60"></div>
+                                    <div class="row justify-content-between">
+
+                                        <div class="col-lg-6 mil-mb-60">
+
+                                            <h6 class="mil-muted mil-mb-30">Sénégal</h6>
+
+                                            <p class="mil-light-soft mil-up">Mbour/Saly <span class="mil-no-wrap">+221 76 160 95 85</span></p>
+
+                                        </div>
+                                        <div class="col-lg-6 mil-mb-60">
+
+                                            <h6 class="mil-muted mil-mb-30">Email</h6>
+
+                                            <p class="mil-light-soft"><a href="mailto:hello@baopixel.com" class="mil-light-soft">hello@baopixel.com</a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- menu -->
+
+        <!-- curtain -->
+        <div class="mil-curtain"></div>
+        <!-- curtain end -->
+
+        <!-- frame -->
+        <div class="mil-frame">
+            <div class="mil-frame-top">
+                <a href="home-1.html" class="mil-logo">
+                    <img src="assets/typo.svg" alt="BaoPixel" class="logo-desktop">
+                    <img src="assets/icon.svg" alt="BaoPixel" class="logo-mobile">
+                </a>
+                <div class="mil-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+            <div class="mil-frame-bottom">
+                <div class="mil-current-page"></div>
+                <div class="mil-back-to-top">
+                    <a href="#top" class="mil-link mil-dark mil-arrow-place">
+                        <span>Back to top</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- frame end -->
+
+        <!-- content -->
+        <div class="mil-content">
+            <div id="swupMain" class="mil-main-transition">
+
+                <!-- banner -->
+                <div class="mil-inner-banner mil-p-0-120">
+                    <div class="mil-banner-content mil-center mil-up">
+                        <div class="container">
+                            <ul class="mil-breadcrumbs mil-center mil-mb-60">
+                                <li><a href="home-1.html">Accueil</a></li>
+                                <li><a href="devis.html">Demande de devis</a></li>
+                            </ul>
+                            <h1 class="mil-mb-60">Demande de devis<span class="mil-thin"> – Communication & branding</span></h1>
+                            <a href="#form-devis" class="mil-button mil-arrow-place">
+                                <span>Commencer</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- banner end -->
+
+                <!-- devis form section -->
+                <section id="form-devis">
+                    <div class="container mil-p-120-90">
+
+                        <!-- Introduction -->
+                        <div class="mil-intro-text mil-up mil-mb-120">
+                            <p>Cette page vous permet de formuler une demande de devis en fonction de vos besoins en communication audiovisuelle et en branding stratégique. Les informations transmises nous permettront d'analyser votre projet et de vous proposer une solution adaptée.</p>
+                        </div>
+
+                        <!-- Confirmation Message -->
+                        <div id="confirmationMessage" class="mil-confirmation-message">
+                            <h4 class="mil-up">Merci pour votre demande.</h4>
+                            <p class="mil-up">Notre équipe analysera votre besoin et vous contactera dans les plus brefs délais afin de vous proposer une solution adaptée.</p>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="devisForm" action="https://formspree.io/f/mdadvkww" method="POST">
+
+                            <!-- Tableau des prestations -->
+                            <div class="mil-form-section mil-up">
+                                <h3>Prestations</h3>
+                                <table class="mil-devis-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Prestation</th>
+                                            <th>Sélection</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 1. Création de contenu (posts) -->
+                                        <tr>
+                                            <td class="mil-devis-prestations">Création de contenu (posts)</td>
+                                            <td>
+                                                <div class="mil-devis-options">
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="contenu4" name="contenu_posts" value="4 contenus / mois">
+                                                        <label for="contenu4">4 contenus / mois</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="contenu8" name="contenu_posts" value="8 contenus / mois">
+                                                        <label for="contenu8">8 contenus / mois</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="contenu12" name="contenu_posts" value="12 contenus / mois">
+                                                        <label for="contenu12">12 contenus / mois</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="contenu16" name="contenu_posts" value="16 contenus / mois">
+                                                        <label for="contenu16">16 contenus / mois</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- 2. Vidéos courtes / reels -->
+                                        <tr>
+                                            <td class="mil-devis-prestations">Vidéos courtes / reels</td>
+                                            <td>
+                                                <div class="mil-devis-options">
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="video2" name="videos_reels" value="2 vidéos / mois">
+                                                        <label for="video2">2 vidéos / mois</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="video4" name="videos_reels" value="4 vidéos / mois">
+                                                        <label for="video4">4 vidéos / mois</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="video8" name="videos_reels" value="8 vidéos / mois">
+                                                        <label for="video8">8 vidéos / mois</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- 3. Production vidéo -->
+                                        <tr>
+                                            <td class="mil-devis-prestations">Production vidéo</td>
+                                            <td>
+                                                <div class="mil-devis-options">
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="prod-video-ponctuelle" name="production_video" value="Intervention ponctuelle">
+                                                        <label for="prod-video-ponctuelle">Intervention ponctuelle</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="prod-video-mensuelle" name="production_video" value="Accompagnement mensuel">
+                                                        <label for="prod-video-mensuelle">Accompagnement mensuel</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- 4. Shooting photo professionnel -->
+                                        <tr>
+                                            <td class="mil-devis-prestations">Shooting photo professionnel</td>
+                                            <td>
+                                                <div class="mil-devis-options">
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="photo-ponctuelle" name="shooting_photo" value="Intervention ponctuelle">
+                                                        <label for="photo-ponctuelle">Intervention ponctuelle</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="photo-mensuelle" name="shooting_photo" value="Accompagnement mensuel">
+                                                        <label for="photo-mensuelle">Accompagnement mensuel</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- 5. Audit de communication & branding -->
+                                        <tr>
+                                            <td class="mil-devis-prestations">Audit de communication & branding</td>
+                                            <td>
+                                                <div class="mil-devis-options">
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="audit-ponctuel" name="audit_communication" value="Audit ponctuel">
+                                                        <label for="audit-ponctuel">Audit ponctuel</label>
+                                                    </div>
+                                                    <div class="mil-devis-option">
+                                                        <input type="radio" id="audit-mensuel" name="audit_communication" value="Audit mensuel">
+                                                        <label for="audit-mensuel">Audit mensuel</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Type d'accompagnement -->
+                            <div class="mil-form-section mil-up">
+                                <h3>Type d'accompagnement souhaité</h3>
+                                <div class="mil-accompaniment-options">
+                                    <div class="mil-radio-option">
+                                        <input type="radio" id="accomp-ponctuelle" name="type_accompagnement" value="Intervention ponctuelle" required>
+                                        <label for="accomp-ponctuelle">Intervention ponctuelle</label>
+                                    </div>
+                                    <div class="mil-radio-option">
+                                        <input type="radio" id="accomp-mensuelle" name="type_accompagnement" value="Accompagnement mensuel" required>
+                                        <label for="accomp-mensuelle">Accompagnement mensuel</label>
+                                    </div>
+                                    <div class="mil-radio-option">
+                                        <input type="radio" id="accomp-mesure" name="type_accompagnement" value="Pack sur mesure" required>
+                                        <label for="accomp-mesure">Pack sur mesure</label>
+                                    </div>
+                                </div>
+                                <p class="mil-form-explanatory">Nos accompagnements sont conçus pour s'adapter aux objectifs, au niveau de structuration et aux enjeux de chaque organisation.</p>
+                            </div>
+
+                            <!-- Informations complémentaires -->
+                            <div class="mil-form-section mil-up">
+                                <div class="mil-form-group">
+                                    <label for="complement">Informations complémentaires</label>
+                                    <textarea id="complement" name="informations_complementaires" placeholder="Décrivez brièvement votre besoin, votre contexte ou vos objectifs."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Informations Client -->
+                            <div class="mil-form-section mil-up">
+                                <h3>Informations client</h3>
+                                <div class="mil-form-row">
+                                    <div class="mil-form-group">
+                                        <label for="entreprise">Nom de l'entreprise / organisation <span class="mil-required">*</span></label>
+                                        <input type="text" id="entreprise" name="entreprise" required>
+                                    </div>
+                                    <div class="mil-form-group">
+                                        <label for="responsable">Nom du responsable <span class="mil-required">*</span></label>
+                                        <input type="text" id="responsable" name="responsable" required>
+                                    </div>
+                                </div>
+
+                                <div class="mil-form-row">
+                                    <div class="mil-form-group">
+                                        <label for="email-pro">Email professionnel <span class="mil-required">*</span></label>
+                                        <input type="email" id="email-pro" name="email" required>
+                                    </div>
+                                    <div class="mil-form-group">
+                                        <label for="telephone">Téléphone / WhatsApp <span class="mil-required">*</span></label>
+                                        <input type="tel" id="telephone" name="telephone" required>
+                                    </div>
+                                </div>
+
+                                <div class="mil-form-row">
+                                    <div class="mil-form-group">
+                                        <label for="secteur">Secteur d'activité <span class="mil-required">*</span></label>
+                                        <input type="text" id="secteur" name="secteur" required>
+                                    </div>
+                                    <div class="mil-form-group">
+                                        <label for="structure">Type de structure <span class="mil-required">*</span></label>
+                                        <select id="structure" name="type_structure" required>
+                                            <option value="">-- Sélectionner --</option>
+                                            <option value="PME">PME</option>
+                                            <option value="Agence">Agence</option>
+                                            <option value="Marque">Marque</option>
+                                            <option value="Autre">Autre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="mil-up">
+                                <button type="submit" class="mil-button mil-arrow-place mil-btn-space">
+                                    <span>Envoyer la demande de devis</span>
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </section>
+                <!-- devis form section end -->
+
+            </div>
+        </div>
+        <!-- content end -->
+
+        <!-- footer -->
+        <footer class="mil-dark-bg">
+            <div class="mi-invert-fix">
+                <div class="container mil-p-120-60">
+                    <!-- Footer Top Row -->
+                    <div class="row justify-content-between">
+                        <!-- Left Column: Brand & Newsletter -->
+                        <div class="col-md-4 col-lg-4 mil-mb-60">
+                            <!-- Brand Name -->
+                            <div class="mil-muted mil-logo mil-up mil-mb-30">Baopixel.</div>
+
+                            <!-- Newsletter Signup -->
+                            <p class="mil-light-soft mil-up mil-mb-30">Abonnez-vous à notre newsletter :</p>
+
+                            <!-- Newsletter Form -->
+                            <form class="mil-subscribe-form mil-up">
+                                <input type="text" placeholder="Votre email">
+                                <button type="submit" class="mil-button mil-icon-button-sm mil-arrow-place"></button>
+                            </form>
+                        </div>
+
+                        <!-- Center & Right Columns: Navigation -->
+                        <div class="col-md-7 col-lg-6">
+                            <div class="row justify-content-end">
+                                <!-- Footer Navigation Menu -->
+                                <div class="col-md-6 col-lg-7">
+                                    <nav class="mil-footer-menu mil-mb-60">
+                                        <ul>
+                                            <li class="mil-up">
+                                                <a href="home-1.html">Accueil</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="portfolio-2.html">Réalisations</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="services.html">Services</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="team.html">À propos</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="contact.html">Contact</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+
+                                <!-- Legal/Policy Links -->
+                                <div class="col-md-6 col-lg-5">
+                                    <ul class="mil-menu-list mil-up mil-mb-60">
+                                        <li><a href="#." class="mil-light-soft">Politique de confidentialité</a></li>
+                                        <li><a href="#." class="mil-light-soft">Conditions générales</a></li>
+                                        <li><a href="#." class="mil-light-soft">Politique des cookies</a></li>
+                                        <li><a href="#." class="mil-light-soft">Rejoindre l'équipe</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Bottom Row -->
+                    <div class="row justify-content-between flex-sm-row-reverse">
+                        <!-- Office Locations -->
+                        <div class="col-md-7 col-lg-6">
+
+                            <div class="row justify-content-between">
+
+                                <!-- Siège Principal -->
+                                <div class="col-md-6 col-lg-5 mil-mb-60">
+                                    <h6 class="mil-muted mil-up mil-mb-30">Sénégal</h6>
+                                    <p class="mil-light-soft mil-up">Mbour/Saly <span class="mil-no-wrap">+221 76 160 95 85</span></p>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="col-md-6 col-lg-5 mil-mb-60">
+                                    <h6 class="mil-muted mil-up mil-mb-30">Contact</h6>
+                                    <p class="mil-light-soft mil-up"><a href="mailto:hello@baopixel.com" class="mil-light-soft">hello@baopixel.com</a></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Social Icons & Copyright -->
+                        <div class="col-md-4 col-lg-6 mil-mb-60">
+
+                            <div class="mil-vert-between">
+                                <!-- Social Media Icons -->
+                                <div class="mil-mb-30">
+                                    <ul class="mil-social-icons mil-up">
+                                        <li><a href="https://www.instagram.com/baopixel_" target="_blank" class="social-icon"> <i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.behance.net/Baopixel" target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/company/baopixel/" target="_blank" class="social-icon"> <i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="https://www.tiktok.com/@baopixel_studio" target="_blank" class="social-icon"> <i class="fab fa-tiktok"></i></a></li>
+                                        <li><a href="https://www.facebook.com/profile.php?id=61573588250297" target="_blank" class="social-icon"> <i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="https://vimeo.com/baopixel" target="_blank" class="social-icon"> <i class="fab fa-vimeo"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Copyright Notice -->
+                                <p class="mil-light-soft mil-up">© Copyright 2026 BaoPixel - Communication audiovisuelle pour l'immobilier. Tous droits réservés.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+    </div>
+    <!-- wrapper end -->
+
+    <!-- jQuery -->
+    <script src="js/plugins/jquery.min.js"></script>
+    <!-- ScrollTo -->
+    <script src="js/plugins/ScrollTo.min.js"></script>
+    <!-- Swiper -->
+    <script src="js/plugins/swiper.min.js"></script>
+    <!-- Fancybox -->
+    <script src="js/plugins/fancybox.min.js"></script>
+    <!-- GSAP -->
+    <script src="js/plugins/gsap.min.js"></script>
+    <!-- ScrollTrigger -->
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="js/plugins/smooth-scroll.js"></script>
+    <!-- SWUP -->
+    <script src="js/plugins/swup.min.js"></script>
+    <!-- Tilt -->
+    <script src="js/plugins/tilt.js"></script>
+    <!-- main js -->
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('devisForm');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+
+            // Add focus animations to form inputs
+            const inputs = document.querySelectorAll('.mil-form-group input, .mil-form-group textarea, .mil-form-group select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add checkbox animation
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.style.animation = 'none';
+                        setTimeout(() => {
+                            this.style.animation = 'pulse 0.3s ease';
+                        }, 10);
+                    }
+                });
+            });
+
+            // Add radio animation
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'pulse 0.3s ease';
+                    }, 10);
+                });
+            });
+
+            // Add CSS animations dynamically
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Collect form data
+                const formData = new FormData(form);
+                const data = {
+                    entreprise: formData.get('entreprise'),
+                    responsable: formData.get('responsable'),
+                    email: formData.get('email'),
+                    telephone: formData.get('telephone'),
+                    secteur: formData.get('secteur'),
+                    type_structure: formData.get('type_structure'),
+                    type_accompagnement: formData.get('type_accompagnement'),
+                    informations_complementaires: formData.get('informations_complementaires'),
+                    contenu_posts: formData.get('contenu_posts'),
+                    videos_reels: formData.get('videos_reels'),
+                    production_video: formData.get('production_video'),
+                    shooting_photo: formData.get('shooting_photo'),
+                    audit_communication: formData.get('audit_communication'),
+                    pack_mesure: formData.get('pack_mesure')
+                };
+
+                // Send to Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        // Show confirmation message with animation
+                        form.style.animation = 'fadeOut 0.5s ease-out forwards';
+                        setTimeout(() => {
+                            form.style.display = 'none';
+                            confirmationMessage.classList.add('show');
+                            // Scroll to confirmation
+                            document.getElementById('form-devis').scrollIntoView({ behavior: 'smooth' });
+                        }, 500);
+                    }
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                });
+            });
+
+            // Add fade out animation
+            const fadeOutStyle = document.createElement('style');
+            fadeOutStyle.textContent = `
+                @keyframes fadeOut {
+                    from { opacity: 1; transform: translateY(0); }
+                    to { opacity: 0; transform: translateY(-20px); }
+                }
+            `;
+            document.head.appendChild(fadeOutStyle);
+        });
+    </script>
+
+</body>
+
+</html>

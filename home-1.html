@@ -1,0 +1,1387 @@
+<!--
+================================================================================
+DOCUMENTATION - Baopixel Creative Agency Website
+================================================================================
+
+FICHIER: home-1.html
+DESCRIPTION: Page d'accueil principale du site web de l'agence créative Baopixel
+LANGUE: Français
+VERSION: 1.0
+
+================================================================================
+STRUCTURE GÉNÉRALE
+================================================================================
+
+1. HEAD - En-tête du document
+    - Métadonnées et configuration
+    - Liens vers les feuilles de style CSS
+    - Titre de la page
+
+2. BODY - Corps du document principal
+    - Wrapper principal (#top)
+    - Curseur personnalisé (mil-ball)
+    - Préchargeur (mil-preloader)
+    - Barre de progression (mil-progress-track)
+    - Menu de navigation (mil-menu-frame)
+    - Cadre de page (mil-frame)
+    - Contenu principal (mil-content)
+    - Éléments cachés (mil-hidden-elements)
+
+================================================================================
+SECTIONS PRINCIPALES
+================================================================================
+
+SECTION 1: CURSEUR PERSONNALISÉ (mil-ball)
+- Élément interactif qui suit le curseur
+- SVG avec icône directionnelle
+- Texte contextuel "More" et "Сhoose"
+- Utilisé pour l'interaction avec les éléments de la page
+
+SECTION 2: PRÉCHARGEUR (mil-preloader)
+- Animation au chargement de la page
+- Affiche le message "Pioneering Creative Excellence"
+- Affiche le nom du site "Baopixel.com"
+- Disparaît après le chargement complet
+
+SECTION 3: BARRE DE PROGRESSION (mil-progress-track)
+- Indique la position de défilement de la page
+- Barre visuelle qui augmente au fur et à mesure du défilement
+
+SECTION 4: MENU DE NAVIGATION (mil-menu-frame)
+- Menu complet avec logo "B."
+- Bouton menu (hamburger) pour mobile
+- Navigation principale avec sous-menus:
+  * Accueil
+  * Portfolio (3 types de grilles)
+  * Services (liste et détail)
+  * Newsletter/Blog (liste et publication)
+  * Autres pages (équipe, contact, 404)
+- Section menu droite avec:
+  * Liste de projets
+  * Liens utiles
+  * Informations de contact (Canada, Allemagne)
+
+SECTION 5: BANNIÈRE D'ACCUEIL (mil-banner)
+- Titre principal: "Designing a Better World Today"
+- Texte d'introduction
+- Deux appels à l'action:
+  * "What we do" (bouton)
+  * "View works" (lien)
+- Texte circulaire rotatif: "Scroll down - Scroll down -"
+- Animations de fond
+- Lien vers la section À propos
+
+SECTION 6: À PROPOS (about)
+- Présentation de l'agence
+- Valeurs et expertise
+- Photo de présentation
+- Citation de fondateur avec avatar
+- Description des services
+
+SECTION 7: SERVICES (mil-dark-bg)
+- Titre principal avec image
+- Grille de 4 services:
+  * Branding and Identity Design
+  * Website Design and Development
+  * Advertising and Marketing Campaigns
+  * Creative Consulting and Development
+- Chaque service avec lien vers la page détail
+- Animations de fond
+
+SECTION 8: ÉQUIPE (team)
+- Présentation de l'équipe
+- Grille de 4 membres:
+  * Anna Oldman - Art Director
+  * Oscar Freeman - Frontend Dev
+  * Emma Newman - Founder
+  * Lisa Trueman - UI/UX Designer
+- Photo, titre, rôle et liens réseaux sociaux pour chaque membre
+- Lien "Read more" vers page équipe complète
+
+SECTION 9: AVIS CLIENTS (reviews)
+- Titre: "Customer Voices: Hear What They Say!"
+- Slider de témoignages (7 avis)
+- Quotation marks en SVG
+- Navigation avec boutons précédent/suivant
+- Pagination interactive
+
+SECTION 10: PARTENAIRES (partners)
+- Slider infini affichant logos de partenaires
+- 4 logos en rotation
+
+SECTION 11: BLOG (Popular Publications)
+- Titre: "Popular Publications:"
+- Grille de 2 articles:
+  * "How to Become a Graphic Designer in 10 Simple Steps"
+  * "16 Best Graphic Design Online and Offline Courses"
+- Chaque article avec:
+  * Image de couverture
+  * Catégorie (TECHNOLOGY)
+  * Date (may 24 2023)
+  * Titre
+  * Extrait de texte
+  * Lien "Read more"
+- Lien "View all" vers la page blog complète
+
+SECTION 12: PIED DE PAGE (footer)
+- Logo Baopixel
+- Formulaire d'abonnement newsletter
+- Menus de navigation
+- Liens utiles
+- Informations de contact (Canada, Allemagne)
+- Icônes réseaux sociaux
+- Copyright
+
+SECTION 13: ÉLÉMENTS CACHÉS (mil-hidden-elements)
+- Dodécaèdre 3D (12 pentagones)
+- SVG de flèche
+- SVG de lignes décoratives pour animations
+
+================================================================================
+RESSOURCES EXTERNES
+================================================================================
+
+FEUILLES DE STYLE CSS:
+- css/plugins/bootstrap-grid.css (grille Bootstrap)
+- css/plugins/font-awesome.min.css (icônes Font Awesome)
+- css/plugins/swiper.min.css (slider Swiper)
+- css/plugins/fancybox.min.css (galerie Fancybox)
+- css/style.css (styles personnalisés)
+
+SCRIPTS JAVASCRIPT:
+- js/plugins/jquery.min.js (jQuery)
+- js/plugins/swup.min.js (transition pages)
+- js/plugins/swiper.min.js (slider)
+- js/plugins/fancybox.min.js (galerie)
+- js/plugins/gsap.min.js (animations)
+- js/plugins/smooth-scroll.js (défilement fluide)
+- js/plugins/ScrollTrigger.min.js (déclencheurs au scroll)
+- js/plugins/ScrollTo.min.js (défilement vers)
+- js/main.js (script principal)
+
+================================================================================
+CLASSES CSS UTILISÉES
+================================================================================
+
+DISPOSITIONS:
+- mil-wrapper (conteneur principal)
+- mil-container (largeur maximale)
+- mil-row (ligne Bootstrap)
+- mil-col-* (colonnes Bootstrap)
+
+COULEURS/THÈMES:
+- mil-dark-bg (fond sombre)
+- mil-soft-bg (fond clair)
+- mil-muted (texte muet)
+- mil-light-soft (texte clair)
+- mil-accent (accent de couleur)
+
+ESPACEMENTS:
+- mil-mb-* (margin-bottom)
+- mil-p-*-* (padding)
+- mil-mb-30, mil-mb-60, mil-mb-90, mil-mb-120 (marges)
+
+ANIMATIONS:
+- mil-up (animation vers le haut)
+- mil-scale (animation d'échelle)
+- mil-rotate (animation de rotation)
+- mil-animation-* (animations décoratives)
+
+INTERACTIVITÉ:
+- mil-button (boutons)
+- mil-link (liens)
+- mil-arrow-place (icône flèche)
+- mil-has-children (menu avec sous-menu)
+- mil-active (élément actif)
+
+================================================================================
+ATTRIBUTS DE DONNÉES UTILISÉS
+================================================================================
+
+- data-value-1, data-value-2 (valeurs d'animation parallaxe)
+- data-swiper-parallax (parallaxe Swiper)
+- data-swiper-parallax-opacity (opacité parallaxe Swiper)
+
+================================================================================
+NOTES IMPORTANTES
+================================================================================
+
+1. La page utilise le framework Swiper pour les sliders
+2. GSAP est utilisé pour les animations avancées
+3. Smooth Scroll pour un défilement fluide
+4. ScrollTrigger pour déclencher les animations au scroll
+5. Fancybox pour les galeries d'images
+6. jQuery pour les manipulations DOM
+7. Swup pour les transitions entre pages
+8. Design responsive avec Bootstrap Grid
+9. Page en langue française avec certains éléments en anglais
+10. Animation de curseur personnalisé au défilement
+
+================================================================================
+DÉPENDANCES REQUISES POUR LE FONCTIONNEMENT
+================================================================================
+
+- Navigateur moderne supportant ES6
+- JavaScript activé
+- Images locales dans le dossier /img/
+- Fichiers CSS dans le dossier /css/
+- Fichiers JS dans le dossier /js/
+
+================================================================================
+-->
+<!-- 
+    ============================================
+    BAOPIXEL - Creative Design Agency Website
+    ============================================
+    
+    FILE: home-1.html
+    VERSION: 1.0
+    LANGUAGE: French (fr)
+    
+    DESCRIPTION:
+    Main homepage for Baopixel creative design agency website.
+    Features a modern, interactive design with animations,
+    portfolio showcase, team section, and client testimonials.
+    
+    KEY SECTIONS:
+    - Header & Navigation Menu
+    - Hero Banner with CTA buttons
+    - About Studio Section
+    - Services Grid (4 service cards)
+    - Team Members Showcase
+    - Customer Reviews Slider
+    - Partner Logos Carousel
+    - Blog/Publications Section
+    - Footer with Contact Info
+    
+    DEPENDENCIES:
+    - Bootstrap Grid System
+    - Font Awesome Icons
+    - Swiper.js (Carousels/Sliders)
+    - FancyBox (Image Lightbox)
+    - GSAP (Animations)
+    - ScrollTrigger (Scroll Animations)
+    
+    ============================================
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- 
+        ============================================
+        META INFORMATION & SEO
+        ============================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- 
+        ============================================
+        STYLESHEET IMPORTS
+        ============================================
+        Bootstrap Grid: Responsive grid layout system
+        Font Awesome: Icon library for UI elements
+        Swiper: Mobile-friendly carousel/slider library
+        FancyBox: Image lightbox/gallery plugin
+        Main Style: Custom project stylesheet
+    -->
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="css/plugins/fancybox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Baopixel</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+</head>
+
+<body>
+    <!-- 
+        ============================================
+        MAIN WRAPPER & GLOBAL COMPONENTS
+        ============================================
+    -->
+    <div class="mil-wrapper" id="top">
+
+        <!-- 
+            ============================================
+            CUSTOM CURSOR ELEMENT
+            ============================================
+            Interactive cursor with hover states:
+            - mil-more-text: Displays when hovering over interactive elements
+            - mil-choose-text: Alternative text state
+            - SVG arrow icon for visual indication
+        -->
+        <div class="mil-ball">
+            <span class="mil-icon-1">
+                <svg viewBox="0 0 128 128">
+                    <path d="M106.1,41.9c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2L116.8,61H11.2l14.9-14.9c1.2-1.2,1.2-3.1,0-4.2	c-1.2-1.2-3.1-1.2-4.2,0l-20,20c-1.2,1.2-1.2,3.1,0,4.2l20,20c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2	L11.2,67h105.5l-14.9,14.9c-1.2,1.2-1.2,3.1,0,4.2c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9l20-20c1.2-1.2,1.2-3.1,0-4.2L106.1,41.9	z" />
+                </svg>
+            </span>
+            <div class="mil-more-text">More</div>
+            <div class="mil-choose-text">Сhoose</div>
+        </div>
+
+        <!-- 
+            ============================================
+            PAGE PRELOADER
+            ============================================
+            Animated loading screen displayed before page content loads.
+            Contains brand messaging and reveal animation effects:
+            - mil-animation-1: Text animation sequence
+            - mil-animation-2: Brand name reveal box effect
+        -->
+        <div class="mil-preloader">
+            <div class="mil-preloader-animation">
+                <div class="mil-pos-abs mil-animation-1">
+                    <p class="mil-h3 mil-muted mil-thin">Stratégie</p>
+                    <p class="mil-h3 mil-muted">Contenu</p>
+                    <p class="mil-h3 mil-muted mil-thin">Impact</p>
+                </div>
+                <div class="mil-pos-abs mil-animation-2">
+                    <div class="mil-reveal-frame">
+                        <p class="mil-reveal-box"></p>
+                        <p class="mil-h3 mil-muted mil-thin">BaoPixel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+            ============================================
+            SCROLLBAR PROGRESS INDICATOR
+            ============================================
+            Visual progress bar showing scroll position on page.
+            mil-progress: Dynamic bar that fills as user scrolls down.
+        -->
+        <div class="mil-progress-track">
+            <div class="mil-progress"></div>
+        </div>
+
+        <!-- 
+            ============================================
+            NAVIGATION MENU (OVERLAY)
+            ============================================
+            Full-screen navigation menu that appears when menu button is clicked.
+            
+            STRUCTURE:
+            - mil-frame-top: Logo and menu toggle button
+            - mil-main-menu: Primary navigation links
+            - mil-menu-right-frame: Featured projects and useful links
+            - Contact information sections (Canada & Germany)
+            
+            FEATURES:
+            - Nested dropdown menus for Portfolio, Services, etc.
+            - Featured projects list
+            - Legal links (Privacy, Terms, etc.)
+            - Office location details
+        -->
+        <div class="mil-menu-frame">
+            <div class="mil-frame-top">
+                <a href="home-1.html" class="mil-logo">
+                    <img src="assets/typo.svg" alt="BaoPixel" class="logo-desktop">
+                    <img src="assets/icon.svg" alt="BaoPixel" class="logo-mobile">
+                </a>
+                <div class="mil-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="mil-menu-content">
+                    <div class="row">
+                        <div class="col-xl-5">
+                            <!-- Primary Navigation Menu -->
+                            <nav class="mil-main-menu" id="swupMenu">
+                                <ul>
+                                    <!-- Accueil Link (Active) -->
+                                    <li class="mil-active">
+                                        <a href="home-1.html">Accueil</a>
+                                    </li>
+                                    <!-- Réalisations Link -->
+                                    <li>
+                                        <a href="portfolio-2.html">Réalisations</a>
+                                    </li>
+                                    <!-- Services Link -->
+                                    <li>
+                                        <a href="services.html">Services</a>
+                                    </li>
+                                    <!-- Devis Link -->
+                                    <li>
+                                        <a href="devis.html">Devis</a>
+                                    </li>
+                                    <!-- À propos Link -->
+                                    <li>
+                                        <a href="team.html">À propos</a>
+                                    </li>
+                                    <!-- Contact Link -->
+                                    <li>
+                                        <a href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Right Column: Featured Projects & Links -->
+                        <div class="col-xl-7">
+                            <div class="mil-menu-right-frame">
+                                <!-- Animated Background Element -->
+                                <div class="mil-animation-in">
+                                    <div class="mil-animation-frame">
+                                        <div class="mil-animation mil-position-1 mil-scale" data-value-1="2" data-value-2="2"></div>
+                                    </div>
+                                </div>
+                                <!-- Menu Right Content -->
+                                <div class="mil-menu-right">
+                                    <div class="row">
+                                        <!-- Featured Projects Section -->
+                                        <div class="col-lg-8 mil-mb-60">
+                                            <h6 class="mil-muted mil-mb-30">Projects</h6>
+                                            <ul class="mil-menu-list">
+                                                <li><a href="project-1.html" class="mil-light-soft">Interior design studio</a></li>
+                                                <li><a href="project-2.html" class="mil-light-soft">Home Security Camera</a></li>
+                                                <li><a href="project-3.html" class="mil-light-soft">Kemia Honest Skincare</a></li>
+                                                <li><a href="project-4.html" class="mil-light-soft">Cascade of Lava</a></li>
+                                                <li><a href="project-5.html" class="mil-light-soft">Air Pro by Molekule</a></li>
+                                                <li><a href="project-6.html" class="mil-light-soft">Tony's Chocolonely</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Useful Links Section -->
+                                        <div class="col-lg-4 mil-mb-60">
+                                            <h6 class="mil-muted mil-mb-30">Useful links</h6>
+                                            <ul class="mil-menu-list">
+                                                <li><a href="#." class="mil-light-soft">Privacy Policy</a></li>
+                                                <li><a href="#." class="mil-light-soft">Terms and conditions</a></li>
+                                                <li><a href="#." class="mil-light-soft">Cookie Policy</a></li>
+                                                <li><a href="#." class="mil-light-soft">Careers</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Divider -->
+                                    <div class="mil-divider mil-mb-60"></div>
+                                    <!-- Office Locations -->
+                                    <div class="row justify-content-between">
+                                        <!-- Siège Principal -->
+                                        <div class="col-lg-6 mil-mb-60">
+                                            <h6 class="mil-muted mil-mb-30">Sénégal</h6>
+                                            <p class="mil-light-soft mil-up">Mbour/Saly <span class="mil-no-wrap">+221 76 160 95 85</span></p>
+                                        </div>
+                                        <!-- Email -->
+                                        <div class="col-lg-6 mil-mb-60">
+                                            <h6 class="mil-muted mil-mb-30">Email</h6>
+                                            <p class="mil-light-soft"><a href="mailto:hello@baopixel.com" class="mil-light-soft">hello@baopixel.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+            ============================================
+            PAGE TRANSITION CURTAIN
+            ============================================
+            Visual curtain effect used during page transitions 
+            with the SWUP page transition library.
+        -->
+        <div class="mil-curtain"></div>
+
+        <!-- 
+            ============================================
+            FIXED FRAME ELEMENTS
+            ============================================
+            Static frame elements visible on all pages:
+            - mil-frame-top: Logo and menu button (header)
+            - mil-frame-bottom: Current page indicator and "Back to top" link
+        -->
+        <div class="mil-frame">
+            <div class="mil-frame-top">
+                <a href="home-1.html" class="mil-logo">
+                    <img src="assets/typo.svg" alt="BaoPixel" class="logo-desktop">
+                    <img src="assets/icon.svg" alt="BaoPixel" class="logo-mobile">
+                </a>
+                <div class="mil-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+            <div class="mil-frame-bottom">
+                <div class="mil-current-page"></div>
+                <div class="mil-back-to-top">
+                    <a href="#top" class="mil-link mil-dark mil-arrow-place">
+                        <span>Back to top</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+            ============================================
+            MAIN CONTENT AREA
+            ============================================
+            Primary content container for page-specific content.
+            Uses SWUP for smooth page transitions (mil-main-transition).
+        -->
+        <div class="mil-content">
+            <div id="swupMain" class="mil-main-transition">
+
+                <!-- 
+                    ============================================
+                    HERO BANNER SECTION
+                    ============================================
+                    Full-width hero section with:
+                    - Animated background elements (mil-animation elements)
+                    - Gradient overlay
+                    - Main headline with call-to-action buttons
+                    - Circular animated scroll indicator with SVG text path
+                    
+                    KEY ELEMENTS:
+                    - mil-banner: Main banner container with dark background
+                    - mil-muted: Light text color class
+                    - mil-thin: Font weight variant
+                    - mil-circle-text: Rotating circular text "Scroll down"
+                -->
+                <section class="mil-banner mil-dark-bg">
+                    <div class="mi-invert-fix">
+                        <!-- Animated Background Shapes -->
+                        <div class="mil-animation-frame">
+                            <div class="mil-animation mil-position-1 mil-scale" data-value-1="7" data-value-2="1.6"></div>
+                            <div class="mil-animation mil-position-2 mil-scale" data-value-1="4" data-value-2="1"></div>
+                            <div class="mil-animation mil-position-3 mil-scale" data-value-1="1.2" data-value-2=".1"></div>
+                        </div>
+
+                        <!-- Gradient Overlay -->
+                        <div class="mil-gradient"></div>
+
+                        <!-- Banner Content -->
+                        <div class="container">
+                            <div class="mil-banner-content mil-up">
+                                <!-- Main Headline -->
+                                <h1 class="mil-muted mil-mb-60"> Communication<span class="mil-thin"> stratégique</span><br>et<span class="mil-thin"> impactant</span></h1>
+                                <!-- Tagline/Description -->
+                                <div class="row">
+                                    <div class="col-md-7 col-lg-5">
+                                        <p class="mil-light-soft mil-mb-60">Nous créons des contenus audiovisuels et des stratégies de branding qui renforcent votre positionnement. Nos solutions facilitent vos décisions business et génèrent des retours mesurables pour votre développement.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Call-to-Action Buttons -->
+                                <a href="services.html" class="mil-button mil-arrow-place mil-btn-space">
+                                    <span>Nos services</span>
+                                </a>
+
+                                <a href="portfolio-2.html" class="mil-link mil-muted mil-arrow-place">
+                                    <span>Voir nos réalisations</span>
+                                </a>
+
+                                <!-- Circular Scroll Indicator with Rotating Text -->
+                                <div class="mil-circle-text">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve" class="mil-ct-svg mil-rotate" data-value="360">
+                                        <defs>
+                                            <path id="circlePath" d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 " />
+                                        </defs>
+                                        <circle cx="150" cy="100" r="75" fill="none" />
+                                        <g>
+                                            <use xlink:href="#circlePath" fill="none" />
+                                            <text style="letter-spacing: 6.5px">
+                                                <textPath xlink:href="#circlePath">Scroll down - Scroll down - </textPath>
+                                            </text>
+                                        </g>
+                                    </svg>
+                                    <!-- Scroll Down Button -->
+                                    <a href="#about" class="mil-button mil-arrow-place mil-icon-button mil-arrow-down"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    ABOUT SECTION
+                    ============================================
+                    Studio introduction with:
+                    - Company description and philosophy
+                    - Founder quote with avatar
+                    - Studio photo with parallax effect
+                    
+                    KEY ELEMENTS:
+                    - mil-about-photo: Image with parallax zoom effect
+                    - mil-about-quote: Founder testimonial section
+                    - mil-lines-place: Decorative line elements
+                -->
+                <section id="about">
+                    <div class="container mil-p-120-30">
+                        <div class="row justify-content-between align-items-center">
+                            <!-- About Text Content -->
+                            <div class="col-lg-6 col-xl-5">
+                                <div class="mil-mb-90">
+                                    <!-- Section Headline -->
+                                    <h2 class="mil-up mil-mb-60">À propos <br>de <span class="mil-thin">BaoPixel</span></h2>
+                                    
+                                    <!-- Studio Description -->
+                                    <p class="mil-up mil-mb-30">BaoPixel est une agence de communication audiovisuelle et branding. Nous transformons votre vision en stratégies et contenus visuels qui influencent vos audiences et facilitent vos objectifs business.</p>
+
+                                    <p class="mil-up mil-mb-60">Notre équipe maîtrise production vidéo, photographie, branding et stratégies digitales. Chaque projet est conçu pour générer des résultats mesurables et optimiser votre retour sur investissement.</p>
+
+                                    <!-- Founder Quote Section -->
+                                    <div class="mil-about-quote">
+                                        <div class="mil-avatar mil-up">
+                                            <img src="img/faces/customers/2.jpg" alt="Founder">
+                                        </div>
+                                        <h6 class="mil-quote mil-up">Transformer votre vision<span class="mil-thin"> en impact</span> <span class="mil-thin">commercial</span></h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- About Photo -->
+                            <div class="col-lg-5">
+                                <div class="mil-about-photo mil-mb-90">
+                                    <!-- Decorative Lines -->
+                                    <div class="mil-lines-place"></div>
+                                    <!-- Image with Parallax Scale Effect -->
+                                    <div class="mil-up mil-img-frame" style="padding-bottom: 160%;">
+                                        <img src="img/photo/1.jpg" alt="img" class="mil-scale" data-value-1="1" data-value-2="1.2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    SERVICES SECTION
+                    ============================================
+                    Showcase of core service offerings in a 4-column grid.
+                    Features animated background elements and large headline.
+                    
+                    SERVICES FEATURED:
+                    1. Branding and Identity Design
+                    2. Website Design and Development
+                    3. Advertising and Marketing Campaigns
+                    4. Creative Consulting and Development
+                    
+                    KEY ELEMENTS:
+                    - mil-services-grid: 4-column responsive grid
+                    - mil-service-card-sm: Individual service cards with hover effects
+                    - Featured image in headline with text wrap
+                -->
+                <section class="mil-dark-bg">
+                    <div class="mi-invert-fix">
+                        <!-- Animated Background Elements -->
+                        <div class="mil-animation-frame">
+                            <div class="mil-animation mil-position-1 mil-scale" data-value-1="2.4" data-value-2="1.4" style="top: 300px; right: -100px"></div>
+                            <div class="mil-animation mil-position-2 mil-scale" data-value-1="2" data-value-2="1" style="left: 150px"></div>
+                        </div>
+
+                        <div class="container mil-p-120-0">
+                            <!-- Section Header -->
+                            <div class="mil-mb-120">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <span class="mil-suptitle mil-light-soft mil-suptitle-right mil-up">Professionals focused on helping your brand<br> grow and move forward.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Large Headline with Image Integration -->
+                                <div class="mil-complex-text justify-content-center mil-up mil-mb-15">
+                                    <span class="mil-text-image"><img src="img/photo/2.jpg" alt="team"></span>
+                                    <h2 class="mil-h1 mil-muted mil-center">Stratégies audiovisuelles <span class="mil-thin">et branding</span></h2>
+                                </div>
+
+                                <!-- Continued Headline with CTA -->
+                                <div class="mil-complex-text justify-content-center mil-up">
+                                    <h2 class="mil-h1 mil-muted mil-center">Pour tous <span class="mil-thin">les secteurs.</span></h2>
+                                    <a href="services.html" class="mil-services-button mil-button mil-arrow-place"><span>Nos services</span></a>
+                                </div>
+                            </div>
+
+                            <!-- Services Grid (4 Columns) -->
+                            <div class="row mil-services-grid m-0">
+                                <!-- Service Card 1: Production Vidéo -->
+                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                                    <a href="service.html" class="mil-service-card-sm mil-up">
+                                        <h5 class="mil-muted mil-mb-30">Production <br>vidéo</h5>
+                                        <p class="mil-light-soft mil-mb-30">Vidéos institutionnelles, commerciales ou documentaires. Tournage HD/4K, montage professionnel, animation 3D et drone aérien pour tous les secteurs.</p>
+                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                                    </a>
+                                </div>
+
+                                <!-- Service Card 2: Photographie -->
+                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                                    <a href="service.html" class="mil-service-card-sm mil-up">
+                                        <h5 class="mil-muted mil-mb-30">Photographie <br>professionnelle</h5>
+                                        <p class="mil-light-soft mil-mb-30">Prise de vue, retouche avancée et mise en scène pour valoriser vos produits, espaces ou services. Images haute résolution optimisées pour tous les supports.</p>
+                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                                    </a>
+                                </div>
+
+                                <!-- Service Card 3: Campagnes Publicitaires -->
+                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                                    <a href="service.html" class="mil-service-card-sm mil-up">
+                                        <h5 class="mil-muted mil-mb-30">Campagnes <br>publicitaires</h5>
+                                        <p class="mil-light-soft mil-mb-30">Stratégie créative, production audiovisuelle, distribution média et optimisation ROI. Campagnes intégrées pour maximiser votre reach et vos conversions.</p>
+                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                                    </a>
+                                </div>
+
+                                <!-- Service Card 4: Branding -->
+                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                                    <a href="service.html" class="mil-service-card-sm mil-up">
+                                        <h5 class="mil-muted mil-mb-30">Branding et <br>stratégie digitale</h5>
+                                        <p class="mil-light-soft mil-mb-30">Identité visuelle, gestion réseaux sociaux, community management et stratégie de contenu. Construisez une présence cohérente et impactante.</p>
+                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    TEAM SECTION
+                    ============================================
+                    Team member showcase with 4 team card profiles.
+                    Displays member photo, name, role, and social media links.
+                    
+                    TEAM MEMBERS:
+                    - Anna Oldman (Art Director)
+                    - Oscar Freeman (Frontend Dev)
+                    - Emma Newman (Founder)
+                    - Lisa Trueman (UI/UX Designer)
+                    
+                    KEY ELEMENTS:
+                    - mil-team-card: Individual team member card
+                    - mil-social-icons: Social media links
+                    - mil-secrc-text: Member info container
+                -->
+                <section>
+                    <div class="container mil-p-120-30">
+                        <div class="row justify-content-between align-items-center">
+                            <!-- Team Section Text -->
+                            <div class="col-lg-5 col-xl-4">
+                                <div class="mil-mb-90">
+                                    <!-- Section Headline -->
+                                    <h2 class="mil-up mil-mb-60">Notre <br>Équipe</h2>
+                                    
+                                    <!-- Team Description -->
+                                    <p class="mil-up mil-mb-30">Une équipe d'experts en production audiovisuelle, photographie et branding. Nous combinons expertise technique et stratégie pour générer des résultats business mesurables.</p>
+
+                                    <p class="mil-up mil-mb-60">Chaque projet est conçu avec rigueur pour optimiser votre ROI et renforcer votre positionnement stratégique.</p>
+
+                                    <!-- CTA Button -->
+                                    <div class="mil-up"><a href="team.html" class="mil-button mil-arrow-place mil-mb-60"><span>En savoir plus</span></a></div>
+
+                                    <!-- Team Tagline -->
+                                    <h4 class="mil-up"><span class="mil-thin">Expertise</span> audiovisuelle <br><span class="mil-thin">et</span> branding stratégique.</h4>
+                                </div>
+                            </div>
+
+                            <!-- Team Members Grid -->
+                            <div class="col-lg-6">
+                                <div class="mil-team-list">
+                                    <!-- Decorative Lines -->
+                                    <div class="mil-lines-place"></div>
+
+                                    <!-- Team Members (2x2 Grid) -->
+                                    <div class="row mil-mb-60">
+                                        <!-- Left Column -->
+                                        <div class="col-sm-6">
+                                            <!-- Team Member 1: Anna Oldman -->
+                                            <div class="mil-team-card mil-up mil-mb-30">
+                                                <img src="img/faces/1.jpg" alt="Team member">
+                                                <div class="mil-description">
+                                                    <div class="mil-secrc-text">
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Anna Oldman</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">Art Director</p>
+                                                        <!-- Social Media Links -->
+                                                        <ul class="mil-social-icons mil-center">
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Team Member 2: Oscar Freeman -->
+                                            <div class="mil-team-card mil-up mil-mb-30">
+                                                <img src="img/faces/3.jpg" alt="Team member">
+                                                <div class="mil-description">
+                                                    <div class="mil-secrc-text">
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Oscar Freeman</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">Frontend Dev</p>
+                                                        <!-- Social Media Links -->
+                                                        <ul class="mil-social-icons mil-center">
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Right Column -->
+                                        <div class="col-sm-6">
+                                            <!-- Founder Indicator (Mobile Hidden) -->
+                                            <p class="mil-mobile-hidden mil-text-sm mil-mb-30" style="height: 30px;"><span class="mil-accent">*</span> The founders of our agency</p>
+
+                                            <!-- Team Member 3: Emma Newman -->
+                                            <div class="mil-team-card mil-up mil-mb-30">
+                                                <img src="img/faces/2.jpg" alt="Team member">
+                                                <div class="mil-description">
+                                                    <div class="mil-secrc-text">
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Emma Newman</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">Founder</p>
+                                                        <!-- Social Media Links -->
+                                                        <ul class="mil-social-icons mil-center">
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Team Member 4: Lisa Trueman -->
+                                            <div class="mil-team-card mil-up mil-mb-30">
+                                                <img src="img/faces/4.jpg" alt="Team member">
+                                                <div class="mil-description">
+                                                    <div class="mil-secrc-text">
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Lisa Trueman</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">UI/UX Designer</p>
+                                                        <!-- Social Media Links -->
+                                                        <ul class="mil-social-icons mil-center">
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    CLIENT TESTIMONIALS SECTION
+                    ============================================
+                    Customer reviews displayed in a Swiper carousel slider.
+                    Features navigation arrows and pagination dots.
+                    
+                    STRUCTURE:
+                    - Section header with description
+                    - Swiper slider with 7 review slides
+                    - Previous/Next navigation arrows
+                    - Pagination indicators
+                    - Quote icon SVG
+                    
+                    KEY ELEMENTS:
+                    - mil-reviews-slider: Main swiper container
+                    - mil-review-frame: Individual review card
+                    - mil-revi-prev / mil-revi-next: Navigation controls
+                    - mil-revi-pagination: Pagination dots
+                -->
+                <section class="mil-soft-bg">
+                    <div class="container mil-p-120-120">
+
+                        <!-- Section Header -->
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up">Témoignages de nos clients immobiliers<br>qui ont optimisé leur communication audiovisuelle.</span>
+                            </div>
+                        </div>
+
+                        <!-- Section Title -->
+                        <h2 class="mil-center mil-up mil-mb-60">Avis de nos <span class="mil-thin">clients :</span> <br>Leurs <span class="mil-thin">résultats</span></h2>
+
+                        <!-- Pagination Indicator -->
+                        <div class="mil-revi-pagination mil-up mil-mb-60"></div>
+
+                        <!-- Reviews Slider Container -->
+                        <div class="row mil-relative justify-content-center">
+                            <div class="col-lg-8">
+
+                                <!-- Navigation Arrows -->
+                                <div class="mil-slider-nav mil-soft mil-reviews-nav mil-up">
+                                    <div class="mil-slider-arrow mil-prev mil-revi-prev mil-arrow-place"></div>
+                                    <div class="mil-slider-arrow mil-revi-next mil-arrow-place"></div>
+                                </div>
+
+                                <!-- Quote Icon SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="mil-quote-icon mil-up">
+                                    <path d="M 13.5 10 A 8.5 8.5 0 0 0 13.5 27 A 8.5 8.5 0 0 0 18.291016 25.519531 C 17.422273 29.222843 15.877848 31.803343 14.357422 33.589844 C 12.068414 36.279429 9.9433594 37.107422 9.9433594 37.107422 A 1.50015 1.50015 0 1 0 11.056641 39.892578 C 11.056641 39.892578 13.931586 38.720571 16.642578 35.535156 C 19.35357 32.349741 22 27.072581 22 19 A 1.50015 1.50015 0 0 0 21.984375 18.78125 A 8.5 8.5 0 0 0 13.5 10 z M 34.5 10 A 8.5 8.5 0 0 0 34.5 27 A 8.5 8.5 0 0 0 39.291016 25.519531 C 38.422273 29.222843 36.877848 31.803343 35.357422 33.589844 C 33.068414 36.279429 30.943359 37.107422 30.943359 37.107422 A 1.50015 1.50015 0 1 0 32.056641 39.892578 C 32.056641 39.892578 34.931586 38.720571 37.642578 35.535156 C 40.35357 32.349741 43 27.072581 43 19 A 1.50015 1.50015 0 0 0 42.984375 18.78125 A 8.5 8.5 0 0 0 34.5 10 z" fill="#000000" />
+                                </svg>
+
+                                <!-- Swiper Carousel Container -->
+                                <div class="swiper-container mil-reviews-slider">
+                                    <div class="swiper-wrapper">
+                                        <!-- Review Slide 1 -->
+                                        <div class="swiper-slide">
+                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+                                                <h5 class="mil-up mil-mb-10">Pierre Durand</h5>
+                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Directeur développement immobilier</p>
+                                                <p class="mil-text-xl mil-up">BaoPixel a transformé notre approche communication. Les vidéos produites ont augmenté nos visites de 40%. Équipe stratégique, livrables professionnels et mesurables.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Review Slide 2 -->
+                                        <div class="swiper-slide">
+                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+                                                <h5 class="mil-up mil-mb-10">Sophie Leclerc</h5>
+                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Responsable marketing digital</p>
+                                                <p class="mil-text-xl mil-up">BaoPixel comprend réellement nos enjeux business. Campagnes audiovisuelles pensées pour générer des résultats concrets et ROI mesurable. Excellente expertise stratégique.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Review Slide 3 -->
+                                        <div class="swiper-slide">
+                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+                                                <h5 class="mil-up mil-mb-10">Antoine Bernard</h5>
+                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">PDG agence création boutique</p>
+                                                <p class="mil-text-xl mil-up">Service professionnel et fiable. BaoPixel maîtrise la production audiovisuelle et le branding avec une qualité qui différencie vraiment votre positionnement marché.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    PARTNERS / BRANDS CAROUSEL
+                    ============================================
+                    Infinite horizontal scrolling carousel showing partner/brand logos.
+                    Used for displaying client logos or partner companies.
+                    
+                    KEY ELEMENTS:
+                    - mil-infinite-show: Swiper slider class for infinite loop
+                    - mil-partner-frame: Individual partner logo container
+                    - Width property on each slide varies by logo size
+                -->
+                <div class="mil-soft-bg">
+                    <div class="container mil-p-0-120">
+
+                        <!-- Partners Carousel Slider -->
+                        <div class="swiper-container mil-infinite-show mil-up">
+                            <div class="swiper-wrapper">
+                                <!-- Partner Logo 1 -->
+                                <div class="swiper-slide">
+                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img src="img/partners/1.svg" alt="logo"></a>
+                                </div>
+                                <!-- Partner Logo 2 -->
+                                <div class="swiper-slide">
+                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img src="img/partners/2.svg" alt="logo"></a>
+                                </div>
+                                <!-- Partner Logo 3 -->
+                                <div class="swiper-slide">
+                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img src="img/partners/1.svg" alt="logo"></a>
+                                </div>
+                                <!-- Partner Logo 4 -->
+                                <div class="swiper-slide">
+                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img src="img/partners/2.svg" alt="logo"></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 
+                    ============================================
+                    BLOG / PUBLICATIONS SECTION
+                    ============================================
+                    Featured articles/blog posts displayed in a 2-column grid.
+                    Each card includes:
+                    - Cover image
+                    - Category label and publish date
+                    - Post title
+                    - Post excerpt
+                    - Read more link
+                    
+                    KEY ELEMENTS:
+                    - mil-blog-card: Individual blog post card
+                    - mil-cover-frame: Post thumbnail image
+                    - mil-labels: Category and date labels
+                    - mil-label mil-accent: Highlighted category label
+                -->
+                <section>
+                    <div class="container mil-p-120-60">
+                        <!-- Section Header with View All Link -->
+                        <div class="row align-items-center mil-mb-30">
+                            <div class="col-lg-6 mil-mb-30">
+                                <h3 class="mil-up">Savoir-faire et insights :</h3>
+                            </div>
+                            <div class="col-lg-6 mil-mb-30">
+                                <div class="mil-adaptive-right mil-up">
+                                    <a href="blog.html" class="mil-link mil-dark mil-arrow-place">
+                                        <span>Tous les articles</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Posts Grid (2 Columns) -->
+                        <div class="row">
+                            <!-- Blog Post 1 -->
+                            <div class="col-lg-6">
+                                <a href="publication.html" class="mil-blog-card mil-mb-60">
+                                    <!-- Post Cover Image -->
+                                    <div class="mil-cover-frame mil-up">
+                                        <img src="img/blog/1.jpg" alt="cover">
+                                    </div>
+                                    <!-- Post Description -->
+                                    <div class="mil-post-descr">
+                                        <!-- Category & Date Labels -->
+                                        <div class="mil-labels mil-up mil-mb-30">
+                                            <div class="mil-label mil-upper mil-accent">AUDIOVISUEL IMMOBILIER</div>
+                                            <div class="mil-label mil-upper">février 2026</div>
+                                        </div>
+                                        <!-- Post Title -->
+                                        <h4 class="mil-up mil-mb-30">Vidéo et contenu visuel : impact sur vos objectifs business</h4>
+                                        <!-- Post Excerpt -->
+                                        <p class="mil-post-text mil-up mil-mb-30">Comment les contenus audiovisuels professionnels transforment votre communication. Stratégies éprouvées, données mesurables et cas d'usage pour tous les secteurs. Optimisez votre ROI marketing et facilitez vos objectifs business.</p>
+                                        <!-- Read More Link -->
+                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
+                                            <span>Lire l'article</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Blog Post 2 -->
+                            <div class="col-lg-6">
+                                <a href="publication.html" class="mil-blog-card mil-mb-60">
+                                    <!-- Post Cover Image -->
+                                    <div class="mil-cover-frame mil-up">
+                                        <img src="img/blog/2.jpg" alt="cover">
+                                    </div>
+                                    <!-- Post Description -->
+                                    <div class="mil-post-descr">
+                                        <!-- Category & Date Labels -->
+                                        <div class="mil-labels mil-up mil-mb-30">
+                                            <div class="mil-label mil-upper mil-accent">STRATÉGIE MARKETING</div>
+                                            <div class="mil-label mil-upper">janvier 2026</div>
+                                        </div>
+                                        <!-- Post Title -->
+                                        <h4 class="mil-up mil-mb-30">Branding audiovisuel : construire une présence impactante</h4>
+                                        <!-- Post Excerpt -->
+                                        <p class="mil-post-text mil-up mil-mb-30">Stratégie complète pour construire et renforcer votre identité visuelle. Branding cohérent, storytelling efficace et présence digitale alignée. Approche adaptée à votre secteur et vos objectifs de développement.</p>
+                                        <!-- Read More Link -->
+                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
+                                            <span>Lire l'article</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 
+                    ============================================
+                    FOOTER SECTION
+                    ============================================
+                    Site footer with:
+                    - Newsletter subscription form
+                    - Footer navigation menu
+                    - Legal/policy links
+                    - Office location information
+                    - Social media icons
+                    - Copyright notice
+                    
+                    STRUCTURE:
+                    - Left column: Brand name, newsletter signup
+                    - Center column: Navigation and legal links
+                    - Right column: Office addresses and social links
+                    
+                    KEY ELEMENTS:
+                    - mil-subscribe-form: Email subscription input
+                    - mil-footer-menu: Navigation links
+                    - mil-social-icons: Social media links
+                    - Dark background (mil-dark-bg)
+                -->
+                <footer class="mil-dark-bg">
+                    <div class="mi-invert-fix">
+                        <div class="container mil-p-120-60">
+                            <!-- Footer Top Row -->
+                            <div class="row justify-content-between">
+                                <!-- Left Column: Brand & Newsletter -->
+                                <div class="col-md-4 col-lg-4 mil-mb-60">
+                                    <!-- Brand Name -->
+                                    <div class="mil-muted mil-logo mil-up mil-mb-30">Baopixel.</div>
+
+                                    <!-- Newsletter Signup -->
+                                    <p class="mil-light-soft mil-up mil-mb-30">Abonnez-vous à notre newsletter :</p>
+
+                                    <!-- Newsletter Form -->
+                                    <form class="mil-subscribe-form mil-up">
+                                        <input type="text" placeholder="Votre email">
+                                        <button type="submit" class="mil-button mil-icon-button-sm mil-arrow-place"></button>
+                                    </form>
+                                </div>
+
+                                <!-- Center & Right Columns: Navigation -->
+                                <div class="col-md-7 col-lg-6">
+                                    <div class="row justify-content-end">
+                                        <!-- Footer Navigation Menu -->
+                                        <div class="col-md-6 col-lg-7">
+                                            <nav class="mil-footer-menu mil-mb-60">
+                                                <ul>
+                                                    <li class="mil-up mil-active">
+                                                        <a href="home-1.html">Accueil</a>
+                                                    </li>
+                                                    <li class="mil-up">
+                                                        <a href="portfolio-2.html">Réalisations</a>
+                                                    </li>
+                                                    <li class="mil-up">
+                                                        <a href="services.html">Services</a>
+                                                    </li>
+                                                    <li class="mil-up">
+                                                        <a href="team.html">À propos</a>
+                                                    </li>
+                                                    <li class="mil-up">
+                                                        <a href="contact.html">Contact</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                        <!-- Legal/Policy Links -->
+                                        <div class="col-md-6 col-lg-5">
+                                            <ul class="mil-menu-list mil-up mil-mb-60">
+                                                <li><a href="#." class="mil-light-soft">Politique de confidentialité</a></li>
+                                                <li><a href="#." class="mil-light-soft">Conditions générales</a></li>
+                                                <li><a href="#." class="mil-light-soft">Politique des cookies</a></li>
+                                                <li><a href="#." class="mil-light-soft">Rejoindre l'équipe</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer Bottom Row -->
+                            <div class="row justify-content-between flex-sm-row-reverse">
+                                <!-- Office Locations -->
+                                <div class="col-md-7 col-lg-6">
+                                    <div class="row justify-content-between">
+                                        <!-- Siège Principal -->
+                                        <div class="col-md-6 col-lg-5 mil-mb-60">
+                                            <h6 class="mil-muted mil-up mil-mb-30">Sénégal</h6>
+                                            <p class="mil-light-soft mil-up">Mbour/Saly <span class="mil-no-wrap">+221 76 160 95 85</span></p>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="col-md-6 col-lg-5 mil-mb-60">
+                                            <h6 class="mil-muted mil-up mil-mb-30">Contact</h6>
+                                            <p class="mil-light-soft mil-up"><a href="mailto:hello@baopixel.com" class="mil-light-soft">hello@baopixel.com</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Social Icons & Copyright -->
+                                <div class="col-md-4 col-lg-6 mil-mb-60">
+                                    <div class="mil-vert-between">
+                                        <!-- Social Media Icons -->
+                                        <div class="mil-mb-30">
+                                            <ul class="mil-social-icons mil-up">
+                                                <li><a href="https://www.instagram.com/baopixel_" target="_blank" class="social-icon"> <i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="https://www.behance.net/Baopixel" target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/baopixel/" target="_blank" class="social-icon"> <i class="fab fa-linkedin"></i></a></li>
+                                                <li><a href="https://www.tiktok.com/@baopixel_studio" target="_blank" class="social-icon"> <i class="fab fa-tiktok"></i></a></li>
+                                                <li><a href="https://www.facebook.com/profile.php?id=61573588250297" target="_blank" class="social-icon"> <i class="fab fa-facebook"></i></a></li>
+                                                <li><a href="https://vimeo.com/baopixel" target="_blank" class="social-icon"> <i class="fab fa-vimeo"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Copyright Notice -->
+                                        <p class="mil-light-soft mil-up">© Copyright 2026 BaoPixel - Communication audiovisuelle pour l'immobilier. Tous droits réservés.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- 
+                    ============================================
+                    HIDDEN DECORATIVE ELEMENTS
+                    ============================================
+                    Non-visible elements used for animations and effects:
+                    
+                    - mil-dodecahedron: 3D geometric shape with pentagons
+                    - mil-arrow: Arrow icon used in animations
+                    - mil-lines: SVG lines for scroll animations
+                    
+                    These elements are positioned absolutely and 
+                    moved via CSS animations triggered by scroll events.
+                -->
+                <div class="mil-hidden-elements">
+                    <!-- 3D Dodecahedron Shape (12 Pentagon Faces) -->
+                    <div class="mil-dodecahedron">
+                        <!-- 12 Pentagon divs for 3D effect -->
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mil-pentagon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow Icon for Navigation/CTA -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mil-arrow">
+                        <path d="M 14 5.3417969 C 13.744125 5.3417969 13.487969 5.4412187 13.292969 5.6367188 L 13.207031 5.7226562 C 12.816031 6.1136563 12.816031 6.7467188 13.207031 7.1367188 L 17.070312 11 L 4 11 C 3.448 11 3 11.448 3 12 C 3 12.552 3.448 13 4 13 L 17.070312 13 L 13.207031 16.863281 C 12.816031 17.254281 12.816031 17.887344 13.207031 18.277344 L 13.292969 18.363281 C 13.683969 18.754281 14.317031 18.754281 14.707031 18.363281 L 20.363281 12.707031 C 20.754281 12.316031 20.754281 11.682969 20.363281 11.292969 L 14.707031 5.6367188 C 14.511531 5.4412187 14.255875 5.3417969 14 5.3417969 z" />
+                    </svg>
+
+                    <!-- SVG Lines for Scroll Animations -->
+                    <svg width="250" viewBox="0 0 300 1404" fill="none" xmlns="http://www.w3.org/2000/svg" class="mil-lines">
+                        <!-- Multiple path elements with mil-move classes for animation -->
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 892L1 941H299V892C299 809.71 232.29 743 150 743C67.7096 743 1 809.71 1 892ZM0 942H300V892C300 809.157 232.843 742 150 742C67.1573 742 0 809.157 0 892L0 942Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 146V97L1 97V146C1 228.29 67.7096 295 150 295C232.29 295 299 228.29 299 146ZM300 96L0 96V146C0 228.843 67.1573 296 150 296C232.843 296 300 228.843 300 146V96Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 1H1V1403H299V1ZM0 0V1404H300V0H0Z" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 -4.37115e-08L150 1404L149 1404L149 0L150 -4.37115e-08Z" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 1324C232.29 1324 299 1257.29 299 1175C299 1092.71 232.29 1026 150 1026C67.7096 1026 1 1092.71 1 1175C1 1257.29 67.7096 1324 150 1324ZM150 1325C232.843 1325 300 1257.84 300 1175C300 1092.16 232.843 1025 150 1025C67.1573 1025 0 1092.16 0 1175C0 1257.84 67.1573 1325 150 1325Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M300 1175H0V1174H300V1175Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 678C232.29 678 299 611.29 299 529C299 446.71 232.29 380 150 380C67.7096 380 1 446.71 1 529C1 611.29 67.7096 678 150 678ZM150 679C232.843 679 300 611.843 300 529C300 446.157 232.843 379 150 379C67.1573 379 0 446.157 0 529C0 611.843 67.1573 679 150 679Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 380H1V678H299V380ZM0 379V679H300V379H0Z" class="mil-move" />
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        ============================================
+        JAVASCRIPT LIBRARIES & SCRIPTS
+        ============================================
+        
+        External Dependencies:
+        - jQuery: DOM manipulation and utilities
+        - SWUP: Smooth page transitions with AJAX
+        - Swiper: Touch-enabled carousel/slider library
+        - FancyBox: Image lightbox and gallery plugin
+        - GSAP: Animation library
+        - Smooth Scroll: Smooth scrolling plugin
+        - ScrollTrigger: Scroll animation triggers for GSAP
+        - ScrollTo: Custom scroll-to functionality
+        
+        Custom Scripts:
+        - main.js: Project-specific functionality and animations
+    -->
+    <script src="js/plugins/jquery.min.js"></script>
+    <script src="js/plugins/swup.min.js"></script>
+    <script src="js/plugins/swiper.min.js"></script>
+    <script src="js/plugins/fancybox.min.js"></script>
+    <script src="js/plugins/gsap.min.js"></script>
+    <script src="js/plugins/smooth-scroll.js"></script>
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
+    <script src="js/plugins/ScrollTo.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
