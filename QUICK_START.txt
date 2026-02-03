@@ -1,0 +1,92 @@
+🚀 GUIDE RAPIDE - DÉPLOYER LE SITE SUR GITHUB PAGES
+
+═══════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 1 : CRÉER LE DÉPÔT GITHUB
+
+1. Aller sur https://github.com/new
+2. Remplir les champs :
+   - Repository name : baopixel.github.io
+   - Description : Site web de BaoPixel - Agence créative
+   - Public
+3. Cliquer "Create repository"
+
+═══════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 2 : POUSSER LE CODE
+
+Dans PowerShell, exécuter :
+
+git remote add origin https://github.com/VOTRE_USERNAME/baopixel.github.io.git
+git branch -M main
+git push -u origin main
+
+(Remplacer VOTRE_USERNAME par votre nom d'utilisateur GitHub)
+
+═══════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 3 : ACTIVER GITHUB PAGES
+
+1. Sur la page GitHub du dépôt
+2. Settings → Pages
+3. Source : main branch
+4. Folder : / (root)
+5. Save
+
+═══════════════════════════════════════════════════════════════════════════
+
+ÉTAPE 4 : VÉRIFIER LE DÉPLOIEMENT
+
+1. Attendre 3-5 minutes
+2. Aller sur https://VOTRE_USERNAME.github.io
+3. Vérifier que le site s'affiche correctement
+
+═══════════════════════════════════════════════════════════════════════════
+
+METTRE À JOUR LE SITE (à chaque modification)
+
+Option 1 - Avec script PowerShell (Recommandé) :
+.\deploy.ps1 "Description de la modification"
+
+Option 2 - Avec script Batch :
+deploy.bat "Description de la modification"
+
+Option 3 - Manuellement :
+git add .
+git commit -m "Description de la modification"
+git push origin main
+
+═══════════════════════════════════════════════════════════════════════════
+
+FICHIERS IMPORTANTS
+
+• DEPLOYMENT.md - Guide complet du déploiement
+• README.md - Documentation du projet
+• deploy.ps1 - Script PowerShell automatique
+• deploy.bat - Script Batch automatique
+• package.json - Dépendances Node.js
+
+═══════════════════════════════════════════════════════════════════════════
+
+QUESTIONS FRÉQUENTES
+
+Q: Le site ne se met pas à jour après le push ?
+R: - Attendre 3-5 minutes
+   - Vider le cache du navigateur (Ctrl+Shift+Delete)
+   - Vérifier que GitHub Pages est activé dans Settings
+
+Q: Comment utiliser un domaine personnalisé ?
+R: Voir DEPLOYMENT.md pour les instructions complètes
+
+Q: Comment modifier le site localement ?
+R: Éditer les fichiers HTML, puis utiliser deploy.ps1 pour mettre à jour
+
+═══════════════════════════════════════════════════════════════════════════
+
+C'EST PRÊT! 🎉
+
+Votre site web BaoPixel est maintenant prêt à être déployé sur GitHub Pages.
+
+Pour commencer : ÉTAPE 1 ci-dessus
+
+Questions ? Voir README.md et DEPLOYMENT.md pour plus de détails.
