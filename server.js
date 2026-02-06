@@ -1,4 +1,4 @@
-/**
+﻿/**
  * BaoPixel - Serveur Express pour la redirection des pages 404
  * 
  * Installation: npm install express
