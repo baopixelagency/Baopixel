@@ -1117,63 +1117,102 @@
     <script src="js/main.js"></script>
 
     <script>
-        // Initialize devis form
-        function initDevisForm() {
+        // Setup devis form - works with and without SWUP
+        function setupDevisForm() {
             const form = document.getElementById('devisForm');
+            if (!form) return;
+
             const confirmationMessage = document.getElementById('confirmationMessage');
-
-            if (!form) return; // Exit if form doesn't exist
-
-            // Reset confirmation message visibility
-            confirmationMessage.classList.remove('show');
+            
+            // Reset form state
+            if (confirmationMessage) {
+                confirmationMessage.classList.remove('show');
+            }
             form.style.display = 'block';
             form.style.animation = '';
+            form.reset();
 
-            // Add focus animations to form inputs
-            const inputs = document.querySelectorAll('.mil-form-group input, .mil-form-group textarea, .mil-form-group select');
-            inputs.forEach(input => {
+            // Clone form to remove all old event listeners
+            const newForm = form.cloneNode(true);
+            form.parentNode.replaceChild(newForm, form);
+
+            // Get the new form reference
+            const currentForm = document.getElementById('devisForm');
+            if (!currentForm) return;
+
+            // Add form submit handler
+            currentForm.addEventListener('submit', handleFormSubmit);
+
+            // Add input focus/blur animations
+            currentForm.querySelectorAll('input, textarea, select').forEach(input => {
                 input.addEventListener('focus', function() {
-                    this.parentElement.style.transform = 'translateY(-2px)';
+                    const group = this.closest('.mil-form-group');
+                    if (group) group.style.transform = 'translateY(-2px)';
                 });
                 input.addEventListener('blur', function() {
-                    this.parentElement.style.transform = 'translateY(0)';
+                    const group = this.closest('.mil-form-group');
+                    if (group) group.style.transform = 'translateY(0)';
                 });
             });
+        }
 
-            // Add checkbox animation
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                        this.style.animation = 'none';
-                        setTimeout(() => {
-                            this.style.animation = 'pulse 0.3s ease';
-                        }, 10);
-                    }
-                });
-            });
+        // Handle form submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const confirmationMessage = document.getElementById('confirmationMessage');
 
-            // Add radio animation
-            const radios = document.querySelectorAll('input[type="radio"]');
-            radios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    this.style.animation = 'none';
+            const data = {
+                entreprise: form.elements.entreprise.value,
+                responsable: form.elements.responsable.value,
+                email: form.elements.email.value,
+                telephone: form.elements.telephone.value,
+                secteur: form.elements.secteur.value,
+                type_structure: form.elements.type_structure.value,
+                type_accompagnement: form.elements.type_accompagnement.value,
+                informations_complementaires: form.elements.informations_complementaires.value,
+                contenu_posts: form.elements.contenu_posts.value || '',
+                videos_reels: form.elements.videos_reels.value || '',
+                production_video: form.elements.production_video.value || '',
+                shooting_photo: form.elements.shooting_photo.value || '',
+                audit_communication: form.elements.audit_communication.value || ''
+            };
+
+            // Send to Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.animation = 'fadeOut 0.5s ease-out forwards';
                     setTimeout(() => {
-                        this.style.animation = 'pulse 0.3s ease';
-                    }, 10);
-                });
+                        form.style.display = 'none';
+                        if (confirmationMessage) {
+                            confirmationMessage.classList.add('show');
+                        }
+                        const formSection = document.getElementById('form-devis');
+                        if (formSection) {
+                            formSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 500);
+                } else {
+                    alert('Erreur lors de l\'envoi. Veuillez réessayer.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Une erreur est survenue. Veuillez réessayer.');
             });
+        }
 
-            // Add CSS animations dynamically (only add once)
-            if (!document.getElementById('pulse-animation')) {
+        // Ensure animations exist
+        function ensureAnimations() {
+            if (!document.getElementById('devis-form-animations')) {
                 const style = document.createElement('style');
-                style.id = 'pulse-animation';
+                style.id = 'devis-form-animations';
                 style.textContent = `
-                    @keyframes pulse {
-                        0% { transform: scale(1); }
-                        50% { transform: scale(1.1); }
-                        100% { transform: scale(1); }
-                    }
                     @keyframes fadeOut {
                         from { opacity: 1; transform: translateY(0); }
                         to { opacity: 0; transform: translateY(-20px); }
@@ -1181,67 +1220,21 @@
                 `;
                 document.head.appendChild(style);
             }
-
-            // Remove old event listeners and add new ones
-            const formClone = form.cloneNode(true);
-            form.parentNode.replaceChild(formClone, form);
-            const newForm = document.getElementById('devisForm');
-
-            newForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                // Collect form data
-                const formData = new FormData(newForm);
-                const data = {
-                    entreprise: formData.get('entreprise'),
-                    responsable: formData.get('responsable'),
-                    email: formData.get('email'),
-                    telephone: formData.get('telephone'),
-                    secteur: formData.get('secteur'),
-                    type_structure: formData.get('type_structure'),
-                    type_accompagnement: formData.get('type_accompagnement'),
-                    informations_complementaires: formData.get('informations_complementaires'),
-                    contenu_posts: formData.get('contenu_posts'),
-                    videos_reels: formData.get('videos_reels'),
-                    production_video: formData.get('production_video'),
-                    shooting_photo: formData.get('shooting_photo'),
-                    audit_communication: formData.get('audit_communication'),
-                    pack_mesure: formData.get('pack_mesure')
-                };
-
-                // Send to Formspree
-                fetch(newForm.action, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        // Show confirmation message with animation
-                        newForm.style.animation = 'fadeOut 0.5s ease-out forwards';
-                        setTimeout(() => {
-                            newForm.style.display = 'none';
-                            document.getElementById('confirmationMessage').classList.add('show');
-                            // Scroll to confirmation
-                            document.getElementById('form-devis').scrollIntoView({ behavior: 'smooth' });
-                        }, 500);
-                    }
-                }).catch(error => {
-                    console.error('Error:', error);
-                    alert('Une erreur est survenue. Veuillez réessayer.');
-                });
-            });
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', initDevisForm);
-
-        // Re-initialize when SWUP loads new content
-        if (typeof Swup !== 'undefined') {
-            const swup = window.swup || new Swup();
-            document.addEventListener('swup:contentReplaced', initDevisForm);
+        // Initialize
+        ensureAnimations();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setupDevisForm);
+        } else {
+            setupDevisForm();
         }
+
+        // Re-initialize when SWUP loads content
+        document.addEventListener('swup:contentReplaced', function() {
+            ensureAnimations();
+            setupDevisForm();
+        });
     </script>
 
 </body>
