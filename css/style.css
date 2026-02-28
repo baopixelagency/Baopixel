@@ -811,6 +811,7 @@ backgrounds
 ------------------------------------------- */
 .mil-dark-bg {
   position: relative;
+
 }
 .mil-dark-bg:before {
   content: "";
