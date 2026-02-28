@@ -896,7 +896,7 @@
 
                             <!-- Type d'accompagnement -->
                             <div class="mil-form-section mil-up">
-                                <h3>Type d'accompagnement souhaità</h3>
+                                <h3>Type d'accompagnement souhaité</h3>
                                 <div class="mil-accompaniment-options">
                                     <div class="mil-radio-option">
                                         <input type="radio" id="accomp-ponctuelle" name="type_accompagnement" value="Intervention ponctuelle" required>
@@ -1117,6 +1117,36 @@
     <script src="js/main.js"></script>
 
     <script>
+        // Auto-refresh page after 0.5 seconds without preloader
+        (function() {
+            const refreshKey = 'devis_page_refreshed';
+            
+            // Check if page was already refreshed in this session
+            if (!sessionStorage.getItem(refreshKey)) {
+                // Set flag to prevent infinite refresh
+                sessionStorage.setItem(refreshKey, 'true');
+                
+                // Refresh after 0.5 seconds
+                setTimeout(function() {
+                    // Hide preloader immediately
+                    const preloader = document.querySelector('.mil-preloader');
+                    if (preloader) {
+                        preloader.style.display = 'none';
+                    }
+                    
+                    // Reload the page without cache
+                    location.reload();
+                }, 500);
+            } else {
+                // Clear the flag after page is fully loaded (allows refresh on next visit)
+                window.addEventListener('load', function() {
+                    setTimeout(function() {
+                        sessionStorage.removeItem(refreshKey);
+                    }, 1000);
+                });
+            }
+        })();
+
         // Setup devis form - works with and without SWUP
         function setupDevisForm() {
             const form = document.getElementById('devisForm');
